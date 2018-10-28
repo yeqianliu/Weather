@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/base_01"
+        android:orientation="horizontal">
+        <!-->今日天气<-->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/weather_today"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!-->城市<-->
+            <!-->发布时间<-->
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="125dp"
+                android:layout_height="119dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="17@string/degree"
+                android:textColor="@android:color/white"
+                android:textSize="90sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="17°" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="59dp"
+                android:layout_marginEnd="144dp"
+                android:layout_marginTop="32dp"
+                android:text="TextView"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="92dp"
+                android:layout_height="88dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/weather_100" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="92dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="61dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <!--<RelativeLayout
+            android:id="@+id/future_info"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10.0dip">
+
+            <ViewPager
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewpager">
+
+            </ViewPager>
+
+        </RelativeLayout>七日天气信息-->
+
+
+        <!--><-->
+        <!--><-->
+        <!--><-->
+        <!--><-->
+        <!--><-->
+
+
+    </LinearLayout>
+</RelativeLayout>

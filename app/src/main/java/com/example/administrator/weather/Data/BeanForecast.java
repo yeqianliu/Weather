@@ -43,13 +43,13 @@ public class BeanForecast {
     public class DailyForecast {
 
         @SerializedName("cond_code_d")
-        private String condCodeD;
+        private String condcoded;
         @SerializedName("cond_code_n")
-        private String condCodeN;
+        private String condcoden;
         @SerializedName("cond_txt_d")
-        private String condTxtD;
+        private String condtxtd;
         @SerializedName("cond_txt_n")
-        private String condTxtN;
+        private String condtxtn;
         private String date;
         private String hum;
         private String mr;
@@ -60,9 +60,9 @@ public class BeanForecast {
         private String sr;
         private String ss;
         @SerializedName("tmp_max")
-        private String tmpMax;
+        private String tmpmax;
         @SerializedName("tmp_min")
-        private String tmpMin;
+        private String tmpmin;
         @SerializedName("uv_index")
         private String uvIndex;
         private String vis;
@@ -74,32 +74,32 @@ public class BeanForecast {
         private String windSc;
         @SerializedName("wind_spd")
         private String windSpd;
-        public void setCondCodeD(String condCodeD) {
-            this.condCodeD = condCodeD;
+        public void setCondcoded(String condcoded) {
+            this.condcoded = condcoded;
         }
-        public String getCondCodeD() {
-            return condCodeD;
-        }
-
-        public void setCondCodeN(String condCodeN) {
-            this.condCodeN = condCodeN;
-        }
-        public String getCondCodeN() {
-            return condCodeN;
+        public String getCondcoded() {
+            return condcoded;
         }
 
-        public void setCondTxtD(String condTxtD) {
-            this.condTxtD = condTxtD;
+        public void setCondcoden(String condcoden) {
+            this.condcoden = condcoden;
         }
-        public String getCondTxtD() {
-            return condTxtD;
+        public String getCondcoden() {
+            return condcoden;
         }
 
-        public void setCondTxtN(String condTxtN) {
-            this.condTxtN = condTxtN;
+        public void setCondtxtd(String condtxtd) {
+            this.condtxtd = condtxtd;
         }
-        public String getCondTxtN() {
-            return condTxtN;
+        public String getCondtxtd() {
+            return condtxtd;
+        }
+
+        public void setCondtxtn(String condtxtn) {
+            this.condtxtn = condtxtn;
+        }
+        public String getCondtxtn() {
+            return condtxtn;
         }
 
         public void setDate(String date) {
@@ -165,18 +165,18 @@ public class BeanForecast {
             return ss;
         }
 
-        public void setTmpMax(String tmpMax) {
-            this.tmpMax = tmpMax;
+        public void setTmpmax(String tmpmax) {
+            this.tmpmax = tmpmax;
         }
-        public String getTmpMax() {
-            return tmpMax;
+        public String getTmpmax() {
+            return tmpmax;
         }
 
-        public void setTmpMin(String tmpMin) {
-            this.tmpMin = tmpMin;
+        public void setTmpmin(String tmpmin) {
+            this.tmpmin = tmpmin;
         }
-        public String getTmpMin() {
-            return tmpMin;
+        public String getTmpmin() {
+            return tmpmin;
         }
 
         public void setUvIndex(String uvIndex) {

@@ -1,108 +1,433 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:id="@+id/drawerLayout"
 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/base_01"
+    android:orientation="vertical">
+    <!--tools:context=".MainActivity">-->
+
+    <!--主内容布局-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/base_01"
         android:orientation="horizontal">
-        <!-->今日天气<-->
+        <Button android:id="@+id/btn_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="显示侧滑布局"/>
+        <include layout="@layout/search"></include>
+        <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000">
+        <!-- Toolbar 透明/不能使用linear layout
+        https://blog.csdn.net/KevinsCSDN/article/details/53206316-->
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/yingbixingshu"
+            android:text="城市"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </android.support.v7.widget.Toolbar>
+
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+            xmlns:sothree="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/sliding_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            sothree:umanoPanelHeight="80dp"
+            sothree:umanoClipPanel="true"
+            sothree:umanoFadeColor="@color/transparent_background"
+            sothree:umanoShadowHeight="0dp"
+            app:umanoScrollableView="@+id/sevenListView">
+
+            <!-->今日天气<-->
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/weather_today"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000">
+                <TextView
+                    android:id="@+id/tmpNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="288dp"
+                    android:fontFamily="@font/yingbixingshu"
+                    android:text="17@string/degree"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="90sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                     />
+
+                <TextView
+                    android:id="@+id/tmpmax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/yingbixingshu"
+                    android:text="max"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorNormal"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tmpmin"
+                    app:layout_constraintTop_toBottomOf="@+id/tmpNow"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/tmpmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/yingbixingshu"
+                    android:text="min"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorNormal"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tmpNow" />
+
+                <ImageView
+                    android:id="@+id/cond_code"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="84dp"
+                    android:layout_marginTop="288dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/tmpNow"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cond_txt"
+                    android:layout_width="92dp"
+                    android:layout_height="38dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/yingbixingshu"
+                    android:text="Text"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorNormal"
+                    android:textSize="30sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/tmpmax"
+                    app:layout_constraintTop_toBottomOf="@+id/cond_code" />
+
+                <TextView
+                    android:id="@+id/pm25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/yingbixingshu "
+                    android:text="pm25"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorNormal"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tmpmin" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+                <!--七日天气信息-->
+                <!--seventitle高度和根布局umanoPanelHeight一样,是handler部分-->
+                <TextView
+                    android:id="@+id/seven_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:fontFamily="@font/yingbixingshu"
+                    android:layout_marginStart="16dp"
+                    android:text="\n预报\n"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorNormal"
+                    android:textSize="24sp" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorSheet">
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1px"
+                        android:background="@android:color/darker_gray"></View>
+                    <GridView
+                        android:id="@+id/sevenListView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numColumns="7"
+
+
+                        />
+                    <!--小时预报折线图-->
+                    <TextView
+                        android:id="@+id/hour_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/yingbixingshu"
+                        android:layout_marginStart="16dp"
+                        android:text="\n时间轴\n"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="24sp" />
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1px"
+                        android:background="@android:color/darker_gray"></View>
+                    <com.example.ccy.miuiweatherline.MiuiWeatherView
+                        android:id="@+id/weather"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:line_interval="60dp"
+                        app:min_point_height="60dp"
+                        android:background="#ffffff"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+
+    </LinearLayout>
+    <!--侧滑布局-->
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="320dp"
+        android:id="@+id/drwerLayout"
+        android:background="#ffffff"
+        android:layout_gravity="start">
+        <TextView android:id="@+id/tv_drawerContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="侧滑内容"/>
+    </LinearLayout>
+    <!-->标题栏<-->
+    <!-->发布时间<-->
+    <!--<android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000">
+       &lt;!&ndash; Toolbar 透明/不能使用linear layout
+       https://blog.csdn.net/KevinsCSDN/article/details/53206316&ndash;&gt;
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/yingbixingshu"
+            android:text="城市"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </android.support.v7.widget.Toolbar>
+
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        sothree:umanoPanelHeight="80dp"
+        sothree:umanoClipPanel="true"
+        sothree:umanoFadeColor="@color/transparent_background"
+        sothree:umanoShadowHeight="0dp"
+        app:umanoScrollableView="@+id/sevenListView">
+
+        &lt;!&ndash;dash;&gt;今日天气<&ndash;&gt;
         <android.support.constraint.ConstraintLayout
             android:id="@+id/weather_today"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <!-->城市<-->
-            <!-->发布时间<-->
-
+            android:layout_height="match_parent"
+            android:background="#00000000">
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="125dp"
-                android:layout_height="119dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
-                android:fontFamily="sans-serif-condensed"
+                android:id="@+id/tmpNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="288dp"
+                android:fontFamily="@font/yingbixingshu"
                 android:text="17@string/degree"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorPrimary"
                 android:textSize="90sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="17°" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tmpmax"
                 android:layout_width="wrap_content"
-                android:layout_height="59dp"
-                android:layout_marginEnd="144dp"
-                android:layout_marginTop="32dp"
-                android:text="TextView"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/yingbixingshu"
+                android:text="max"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorNormal"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tmpmin"
+                app:layout_constraintTop_toBottomOf="@+id/tmpNow"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tmpmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/yingbixingshu"
+                android:text="min"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorNormal"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tmpNow" />
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="92dp"
-                android:layout_height="88dp"
-                android:layout_marginEnd="24dp"
+                android:id="@+id/cond_code"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginStart="84dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="288dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/weather_100" />
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tmpNow"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/cond_txt"
                 android:layout_width="92dp"
                 android:layout_height="38dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/yingbixingshu"
+                android:text="Text"
+                android:textAlignment="center"
+                android:textColor="@color/colorNormal"
+                android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tmpmax"
+                app:layout_constraintTop_toBottomOf="@+id/cond_code" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/pm25"
                 android:layout_width="wrap_content"
-                android:layout_height="61dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/yingbixingshu "
+                android:text="pm25"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorNormal"
+                android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toBottomOf="@+id/tmpmin" />
 
         </android.support.constraint.ConstraintLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            &lt;!&ndash;七日天气信息&ndash;&gt;
+            &lt;!&ndash;seventitle高度和根布局umanoPanelHeight一样,是handler部分&ndash;&gt;
+            <TextView
+                android:id="@+id/seven_title"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:fontFamily="@font/yingbixingshu"
+                android:layout_marginStart="16dp"
+                android:text="\n预报\n"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorNormal"
+                android:textSize="24sp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorSheet">
 
-        <!--<RelativeLayout
-            android:id="@+id/future_info"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10.0dip">
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@android:color/darker_gray"></View>
+                <GridView
+                    android:id="@+id/sevenListView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numColumns="7"
 
-            <ViewPager
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/viewpager">
 
-            </ViewPager>
+                    tools:ignore="MissingConstraints" />
+                &lt;!&ndash;小时预报折线图&ndash;&gt;
+                <TextView
+                    android:id="@+id/hour_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/yingbixingshu"
+                    android:layout_marginStart="16dp"
+                    android:text="\n时间轴\n"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24sp" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@android:color/darker_gray"></View>
+                <com.example.ccy.miuiweatherline.MiuiWeatherView
+                    android:id="@+id/weather"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:line_interval="60dp"
+                    app:min_point_height="60dp"
+                    android:background="#ffffff"/>
+            </LinearLayout>
 
-        </RelativeLayout>七日天气信息-->
+
+        </LinearLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>-->
+
+
+
 
 
         <!--><-->
         <!--><-->
         <!--><-->
         <!--><-->
-        <!--><-->
+        <!--> </LinearLayout><-->
 
 
-    </LinearLayout>
-</RelativeLayout>
+
+
+
+
+
+</android.support.v4.widget.DrawerLayout>

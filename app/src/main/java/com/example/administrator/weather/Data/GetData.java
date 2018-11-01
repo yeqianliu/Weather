@@ -8,36 +8,83 @@ import com.google.gson.Gson;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class GetData {
-    ArrayList<HashMap<String,String>> nows;
-    ArrayList<HashMap<String,String>> airs;
-    ArrayList<HashMap<String,String>> hours;
-    ArrayList<HashMap<String,String>> forecasts;
+
+    Now now = new Now();
+    Air air = new Air();
+    ArrayList<Hour> hours = new ArrayList<Hour>(  );
+    ArrayList<Forecast> forecasts = new ArrayList<Forecast>(  );
+
+
     DBManager dbManager;
     public GetData(Context context,String cid) {
         dbManager = new DBManager(context);
         try {
-            nows = dbManager.query( cid,dbManager.TABLE_NOW );
-            airs = dbManager.query( cid,dbManager.TABLE_AIR );
-            hours = dbManager.query( cid,dbManager.TABLE_HOUR );
-            forecasts = dbManager.query( cid,dbManager.TABLE_FORECAST );
+            loadData( cid,dbManager.TABLE_NOW );
+            loadData( cid,dbManager.TABLE_AIR );
+            loadData( cid,dbManager.TABLE_HOUR );
+            loadData( cid,dbManager.TABLE_FORECAST );
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public ArrayList<HashMap<String,String>> getNows(){
-        return nows;
-    }
-    public ArrayList<HashMap<String,String>> getHours(){
-        return hours;
-    }
-    public ArrayList<HashMap<String,String>> getAirs(){
-        return airs;
-    }
-    public ArrayList<HashMap<String,String>> getForecasts(){
-        return forecasts;
+    public void loadData(String cid, String TABLE) throws SQLException {
+
+        ArrayList<HashMap<String,String>> maps = new ArrayList<HashMap<String, String>>( );
+        Gson gson = new Gson();
+        maps = dbManager.query( cid,TABLE );
+
+        if(TABLE==dbManager.TABLE_NOW){
+            String s=gson.toJson( maps.get( 0 ));
+            //Log.i( "nnnnnnnn", "loadData: " +s);
+            now = gson.fromJson(s,Now.class);
+        }
+
+        else if(TABLE==dbManager.TABLE_AIR){
+            String s=gson.toJson( maps.get( 0 ));
+           // Log.i( "aaaaaaa", "loadData: " +s);
+            air = gson.fromJson(s,Air.class);
+            //Log.i( "air.getAqi", "Time: " +air.getAqi());
+        }
+
+        else if(TABLE==dbManager.TABLE_HOUR){
+            for (int i=0;i<maps.size();i++) {
+                String s=gson.toJson( maps.get( i ));
+                //Log.i( "hhhhhhhh", "loadData: " +s);
+                Hour hour = gson.fromJson( s, Hour.class);
+                //Log.i( "hour.getTime", "Time: " +hour.getTime());
+                hours.add(hour);
+            }
+        }
+
+        else if(TABLE==dbManager.TABLE_FORECAST){
+            for (int i=0;i<maps.size();i++) {
+                String s=gson.toJson( maps.get( i ));
+                //Log.i( "fffffffffff", "loadData: " +s);
+                Forecast forecast = gson.fromJson( s, Forecast.class );
+                //Log.i( "forecast.getTmpmax", "tmpMax: " +forecast.getDate());
+                forecasts.add( forecast );
+            }
+        }
     }
 
+    public Now getNow() {
+        return now;
+    }
+
+    public Air getAir() {
+        return air;
+    }
+
+    public List<Hour> getHours() {
+        return hours;
+    }
+
+    public List<Forecast> getForecasts() {
+        return forecasts;
+    }
 }

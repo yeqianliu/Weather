@@ -46,9 +46,9 @@ public class BeanNow {
     public class Now {
         private String cloud;
         @SerializedName("cond_code")
-        private String condCode;
+        private String condcode;
         @SerializedName("cond_txt")
-        private String condTxt;
+        private String condtxt;
         private String fl;
         private String hum;
         private String pcpn;
@@ -56,13 +56,13 @@ public class BeanNow {
         private String tmp;
         private String vis;
         @SerializedName("wind_deg")
-        private String windDeg;
+        private String winddeg;
         @SerializedName("wind_dir")
-        private String windDir;
+        private String winddir;
         @SerializedName("wind_sc")
-        private String windSc;
+        private String windsc;
         @SerializedName("wind_spd")
-        private String windSpd;
+        private String windspd;
 
         public void setCloud(String cloud) {
             this.cloud = cloud;
@@ -72,20 +72,20 @@ public class BeanNow {
             return cloud;
         }
 
-        public void setCondCode(String condCode) {
-            this.condCode = condCode;
+        public void setCondcode(String condcode) {
+            this.condcode = condcode;
         }
 
-        public String getCondCode() {
-            return condCode;
+        public String getCondcode() {
+            return condcode;
         }
 
-        public void setCondTxt(String condTxt) {
-            this.condTxt = condTxt;
+        public void setCondtxt(String condtxt) {
+            this.condtxt = condtxt;
         }
 
-        public String getCondTxt() {
-            return condTxt;
+        public String getCondtxt() {
+            return condtxt;
         }
 
         public void setFl(String fl) {
@@ -136,36 +136,36 @@ public class BeanNow {
             return vis;
         }
 
-        public void setWindDeg(String windDeg) {
-            this.windDeg = windDeg;
+        public void setWinddeg(String winddeg) {
+            this.winddeg = winddeg;
         }
 
-        public String getWindDeg() {
-            return windDeg;
+        public String getWinddeg() {
+            return winddeg;
         }
 
-        public void setWindDir(String windDir) {
-            this.windDir = windDir;
+        public void setWinddir(String winddir) {
+            this.winddir = winddir;
         }
 
-        public String getWindDir() {
-            return windDir;
+        public String getWinddir() {
+            return winddir;
         }
 
-        public void setWindSc(String windSc) {
-            this.windSc = windSc;
+        public void setWindsc(String windsc) {
+            this.windsc = windsc;
         }
 
-        public String getWindSc() {
-            return windSc;
+        public String getWindsc() {
+            return windsc;
         }
 
-        public void setWindSpd(String windSpd) {
-            this.windSpd = windSpd;
+        public void setWindspd(String windspd) {
+            this.windspd = windspd;
         }
 
-        public String getWindSpd() {
-            return windSpd;
+        public String getWindspd() {
+            return windspd;
         }
 
     }

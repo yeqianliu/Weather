@@ -16,29 +16,32 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_AIR = "air";
     public static final String TABLE_HOUR= "hour";
     public static final String TABLE_FORECAST = "forecast";
+    public static final String TABLE_CITY = "city";
     public String test;
 
 
     private String SqlCreateNow = "CREATE TABLE " + TABLE_NOW +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "cid TEXT, " +
-            "condCode TEXT," +
-            "condTxt TEXT," +
-            "tmp TEXT," +
-            "hum TEXT," +
+            "condcode TEXT, " +
+            "condtxt TEXT, " +
+            "tmp TEXT, " +
+            "hum TEXT, " +
             "fl TEXT, " +
-            "windDir TEXT, " +
-            "windSc TEXT, " +
-            "windSpd TEXT, " +
+            "winddir TEXT, " +
+            "windsc TEXT, " +
+            "windspd TEXT, " +
+            "location TEXT, " +
             "loc TEXT)";
 
     private String SqlCreateAir = "CREATE TABLE " + TABLE_AIR +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "cid TEXT, " +
-            "aqi TEXT," +
-            " main TEXT, " +
+            "aqi TEXT, " +
+            "qlty TEXT, " +
+            "main TEXT, " +
             "pm10 TEXT," +
-            " pm25 TEXT, " +
+            "pm25 TEXT, " +
             "no2 TEXT, " +
             "o3 TEXT, " +
             "co TEXT)";
@@ -48,21 +51,26 @@ public class DBHelper extends SQLiteOpenHelper {
             " cid TEXT," +
             " time TEXT," +
             " tmp TEXT, " +
-            "condTxt TEXT," +
-            " condCode TEXT)";
+            "condtxt TEXT," +
+            " condcode TEXT)";
 
     private String SqlCreateForecast = "CREATE TABLE " + TABLE_FORECAST +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "cid TEXT, " +
             "date TEXT," +
-            "tmpMin TEXT, " +
-            "tmpMax TEXT, " +
-            "condCodeD TEXT, " +
-            "condTxtD TEXT," +
-            "condCodeN TEXT, " +
-            "condTxtN TEXT, " +
+            "tmpmin TEXT, " +
+            "tmpmax TEXT, " +
+            "condcoded TEXT, " +
+            "condtxtd TEXT," +
+            "condcoden TEXT, " +
+            "condtxtn TEXT, " +
             "sr TEXT, " +
             "ss TEXT)";
+    private String SqlCreateCity = "CREATE TABLE " + TABLE_CITY +
+            "(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+            " cid TEXT," +
+            " location TEXT," +
+            " parent TEXT)";
 
 
     public DBHelper(Context context) {
@@ -79,6 +87,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL( SqlCreateAir );
         db.execSQL( SqlCreateHour );
         db.execSQL( SqlCreateForecast );
+        db.execSQL( SqlCreateCity );
+        Log.i( "database", "onCreate: 建表完毕" );
 
     }
 
